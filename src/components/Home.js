@@ -9,10 +9,8 @@ import { connect } from 'react-redux';
 class Home extends Component {
     
     render() {
-        const { job,search } = this.props;
+        const { job,search} = this.props;
         console.log('SEAARCH',search)
-        
-        console.log('lalallaala')
         console.log('jobbbbbs',job)
         return (
      
@@ -63,7 +61,6 @@ function mapStateToProps(state) {
       auth: state.auth,
       jobs:state.jobs,
       search:state.search
-
       
     };
   }

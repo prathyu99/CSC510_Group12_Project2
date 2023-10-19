@@ -5,9 +5,10 @@ import { createApplication , closeJob} from '../actions/job';
 class Job extends Component {
     
     
-
-      
-    
+  componentDidMount(){
+    this.props.dispatch(fetchInventoryHistory());
+  }
+       
     render() {
         const { job } = this.props;
         const {user} = this.props.auth;

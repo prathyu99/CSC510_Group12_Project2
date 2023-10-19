@@ -41,9 +41,11 @@ class Goal extends Component {
         this.setState({
           itemname:''
         })
-    
+
+        alert("updated the quantity of "+itemname);
+        document.getElementById("itnameupdate").value = "";
+        document.getElementById("quanupdate").value = "";
        
-        
       }
     
    
@@ -81,6 +83,13 @@ class Goal extends Component {
     this.setState({
       itemname:''
     })
+
+    alert(itemname + " added to the inventory!");
+    document.getElementById("itname").value = "";
+    document.getElementById("quan").value = "";
+    document.getElementById("cost").value = "";
+    document.getElementById("edate").value = "";
+    document.getElementById("bdate").value = ""; 
     
   }
 
@@ -109,6 +118,7 @@ class Goal extends Component {
             <div className="field">
               
           <input
+            id="itname"
             placeholder="Item Name"
             type="text"
             required
@@ -118,6 +128,7 @@ class Goal extends Component {
 
         <div className="field">
           <input
+            id="quan"
             placeholder="Quantity"
             type="text"
             required
@@ -127,6 +138,7 @@ class Goal extends Component {
 
         <div className="field">
           <input
+            id="cost"
             placeholder="Cost per item"
             type="text"
             required
@@ -135,7 +147,8 @@ class Goal extends Component {
         </div>
         <div className="field">
           <input
-            placeholder="Date Bought"
+            id="bdate"
+            placeholder="Date Bought (mm/dd/yy)"
             type="text"
             required
             onChange={(e) => this.handleInputChange('datebought', e.target.value)}
@@ -144,7 +157,8 @@ class Goal extends Component {
 
         <div className="field">
           <input
-            placeholder="Expiration Date"
+            id="edate"
+            placeholder="Expiration Date (mm/dd/yy)"
             type="text"
             required
             onChange={(e) => this.handleInputChange('dateexpired', e.target.value)}
@@ -171,6 +185,7 @@ class Goal extends Component {
             <div className="field">
               
           <input
+            id="itnameupdate"
             placeholder="Item Name"
             type="text"
             required
@@ -180,6 +195,7 @@ class Goal extends Component {
 
         <div className="field">
           <input
+            id="quanupdate"
             placeholder="Quantity"
             type="text"
             required

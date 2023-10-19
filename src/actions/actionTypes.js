@@ -24,6 +24,7 @@ export const CLOSE_JOB = "CLOSE_JOB";
 export const ADD_MENU = "ADD_MENU";
 export const UPDATE_MENU = "UPDATE_MENU";
 export const CLOSE_MENU = "CLOSE_MENU";
+export const ADD_INVENTORY_HISTORY = "ADD_INVENTORY_HISTORY";
 
 export const ADD_APPLICATION = "ADD_APPLICATION";
 export const UPDATE_APPLICATION = "UPDATE_APPLICATION";

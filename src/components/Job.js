@@ -59,13 +59,12 @@ class Job extends Component {
     }
 }
 
-function mapStateToProps({ auth, job,application }) {
-    return {
-      auth,
-      application,
-    
-      
-    };
-  }
+function mapStateToProps({ auth, job,application, inventoryhistory}) {
+  return {
+    auth,
+    application,
+    inventoryhistory
+  };
+}
   
   export default connect(mapStateToProps)(Job);

@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createApplication , closeJob} from '../actions/job';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 class Job extends Component {
     
-    
-
-      
-    
+  predictItem = (itemname)=>{
+    //const dispatch = useDispatch();
+    const inventoryhistory = this.props.inventoryhistory;
+    const filteredInventories = inventoryhistory.filter(inventory => inventory.itemname === itemname);
+    console.log(filteredInventories);
+    // Calculate the sum of quantities
+    const sumOfQuantities = filteredInventories.reduce((total, inventory) => total + inventory.quantity, 0);
+    // Calculate the average
+    const averageQuantity = sumOfQuantities / filteredInventories.length;
+    console.log(averageQuantity);
+    alert("Based on your usage, you might need "+ averageQuantity+" of "+itemname+" for the next month");
+  }  
+  componentDidMount(){
+    this.props.dispatch(fetchInventoryHistory());
+  }
+       
     render() {
         const { job } = this.props;
         const {user} = this.props.auth;
@@ -22,7 +36,9 @@ class Job extends Component {
               <div >
                 <h4 style={{display:'inline-block'}}>Restaurant Name : </h4> 
                 <span style={{marginLeft:'10px'}}>{job.restname}</span>
-                  </div>
+                <button style={{marginLeft:'10px'}} className="button predict-btn" onClick={()=>this.predictItem(job.itemname)}>Predict &nbsp; 
+                <FontAwesomeIcon icon={faChartBar} style={{color: "#f9fafa",}}/></button>
+             </div>
 
 
                   <div >
@@ -59,13 +75,12 @@ class Job extends Component {
     }
 }
 
-function mapStateToProps({ auth, job,application }) {
-    return {
-      auth,
-      application,
-    
-      
-    };
-  }
+function mapStateToProps({ auth, job,application, inventoryhistory}) {
+  return {
+    auth,
+    application,
+    inventoryhistory
+  };
+}
   
   export default connect(mapStateToProps)(Job);

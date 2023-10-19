@@ -7,7 +7,7 @@ import {clearsearchstate} from '../actions/search';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { fetchJobs } from '../actions/job';
+import {fetchJobs} from '../actions/job';
 import Job from './Job';
 
 
@@ -88,7 +88,6 @@ class Update extends Component {
       const {error} = this.props.auth;
       const {user} = this.props.auth;
       const {job} = this.props;
-        
       
         return (
             <div>
@@ -96,7 +95,7 @@ class Update extends Component {
 
         <div>
         {job.map((job) => (
-          <Job job={job} />
+          <Job job={job}/>
         ))}
         </div>
         

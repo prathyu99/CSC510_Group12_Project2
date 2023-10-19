@@ -46,10 +46,11 @@ class App extends React.Component {
   componentDidMount() {
     
 
+    //const {user} = this.props.auth
+    //this.props.dispatch(fetchFriends(user._id));
     this.props.dispatch(fetchJobs());
     
     this.props.dispatch(fetchMenus());
-    
 
     const token = getAuthTokenFromLocalStorage();
 
@@ -65,6 +66,7 @@ class App extends React.Component {
           name: user.name,
         })
       );
+      //const users = this.props.auth.user
       
     }
   }
@@ -73,7 +75,7 @@ class App extends React.Component {
     const {auth} = this.props;
     const { isLoggedIn } = this.props.auth;
     const {user} = this.props.auth;
-    const {job} = this.props;
+    const {job, inventoryhistory} = this.props;
     return (
       <Router>
       <div className="wrapper">
@@ -86,7 +88,7 @@ class App extends React.Component {
           return <Home
           {...props}
           job={job}
-          
+          inventoryhistory={inventoryhistory}
         />
         }}/>
         <Route path ="/login" component={Login}/>
@@ -152,8 +154,6 @@ function mapStateToProps (state){
     auth: state.auth,
     profile:state.profile,
     job: state.job,
-    
-
   }
 
 }

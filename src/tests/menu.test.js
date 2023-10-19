@@ -20,5 +20,13 @@ describe('menus reducer', () => {
     expect(menus(initialState, action)).toEqual(action.menu);
   });
 
+  it('should handle EDIT_ITEM_SUCCESSFULL', () => {
+    const action = {
+      type: EDIT_ITEM_SUCCESSFULL,
+      inventories: ['inventory item 1', 'inventory item 2'],
+    };
+    expect(menus(initialState, action)).toEqual(action.inventories);
+  });
+
   
 });

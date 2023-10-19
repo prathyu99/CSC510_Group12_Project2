@@ -2,14 +2,14 @@
 import { APIURLS } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
 import {
-  ADD_JOB,
-  UPDATE_JOB,
-  ADD_MENU,
-  UPDATE_MENU,
-  
-  ADD_INVENTORY_HISTORY,
-  UPDATE_INVENTORY_HISTORY,
-  
+    ADD_JOB,
+    UPDATE_JOB,
+    ADD_MENU,
+    UPDATE_MENU,
+    DELETE_MENU,
+    ADD_INVENTORY_HISTORY,
+    UPDATE_INVENTORY_HISTORY,
+    DELETE_INVENTORY_ITEM
   } from './actionTypes';
 
 
@@ -41,6 +41,35 @@ export function createJob(
             // do something
             localStorage.setItem("token", data.data.token);
             dispatch(jobSuccess(data.data.job));
+            return;
+          }
+          // dispatch(signupFailed(data.message));
+        });
+    };
+  }
+
+  export function deleteInventoryItem(
+    id
+  ) {
+    console.log("inside delete frontend "+id);
+    return (dispatch) => {
+      const url = APIURLS.deleteInventoryItem();
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: getFormBody({
+          id
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('data', data);
+          if (data.success) {
+            // do something
+            localStorage.setItem("token", data.data.token);
+            dispatch(deleteInventoryItemSuccess(data.data.job));
             return;
           }
           // dispatch(signupFailed(data.message));
@@ -82,8 +111,63 @@ export function createJob(
     };
   }
   
+  export function deleteMenu(
+    id
+  ) {
+    console.log("inside delete frontend "+id);
+    return (dispatch) => {
+      const url = APIURLS.deleteMenu();
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: getFormBody({
+          id
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('data', data);
+          if (data.success) {
+            // do something
+            localStorage.setItem("token", data.data.token);
+            dispatch(deleteMenuSuccess(data.data.menu));
+            return;
+          }
+          // dispatch(signupFailed(data.message));
+        });
+    };
+  }
 
-
+  export function createInventoryHistory(
+    itemname,quantity
+  ) {
+    return (dispatch) => {
+      const url = APIURLS.createInventoryHistory();
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: getFormBody({
+          itemname,
+          quantity
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('data', data);
+          if (data.success) {
+            // do something
+            localStorage.setItem("token", data.data.token);
+            dispatch(inventoryHistorySuccess(data.data.inventoryhistory));
+            return;
+          }
+          // dispatch(signupFailed(data.message));
+        });
+    };
+  }
 
   export function jobSuccess(job) {
     return {
@@ -96,6 +180,13 @@ export function createJob(
     return {
       type: ADD_MENU,
       menu,
+    };
+  }
+
+  export function inventoryHistorySuccess(inventoryhistory) {
+    return {
+      type: ADD_INVENTORY_HISTORY,
+      inventoryhistory,
     };
   }
 
@@ -131,36 +222,7 @@ export function createJob(
         });
     };
   }
- 
-  export function createInventoryHistory(
-    itemname,quantity
-  ) {
-    return (dispatch) => {
-      const url = APIURLS.createInventoryHistory();
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: getFormBody({
-          itemname,
-          quantity
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('data', data);
-          if (data.success) {
-            // do something
-            localStorage.setItem("token", data.data.token);
-            dispatch(inventoryHistorySuccess(data.data.inventoryhistory));
-            return;
-          }
-          // dispatch(signupFailed(data.message));
-        });
-    };
-  }
-
+  
   export function fetchInventoryHistory() {
     return (dispatch) => {
       
@@ -176,7 +238,7 @@ export function createJob(
         });
     };
   }
-  
+
 export function updateJobs(jobs) {
     return {
       type: UPDATE_JOB,
@@ -191,11 +253,27 @@ export function updateJobs(jobs) {
     };
   }
 
+  export function deleteMenuSuccess(menu) {
+    return {
+      type: DELETE_MENU,
+      menu,
+    };
+  }
+
+  export function deleteInventoryItemSuccess(job) {
+    return {
+      type: DELETE_INVENTORY_ITEM,
+      job,
+    };
+  }
+
   export function updateInventoryHistory(inventoryhistory) {
     return {
       type: UPDATE_INVENTORY_HISTORY,
       inventoryhistory,
     };
   }
+
+
 
 

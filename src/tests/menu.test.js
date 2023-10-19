@@ -28,5 +28,12 @@ describe('menus reducer', () => {
     expect(menus(initialState, action)).toEqual(action.inventories);
   });
 
-  
+  it('should handle ADD_MENU', () => {
+    const action = {
+      type: ADD_MENU,
+      menu: 'new menu item',
+    };
+    const expectedState = ['new menu item', ...initialState];
+    expect(menus(initialState, action)).toEqual(expectedState);
+  });
 });

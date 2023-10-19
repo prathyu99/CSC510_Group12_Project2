@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createApplication , closeJob} from '../actions/job';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 class Job extends Component {
     
-    
+  predictItem = (itemname)=>{
+    //const dispatch = useDispatch();
+    const inventoryhistory = this.props.inventoryhistory;
+    const filteredInventories = inventoryhistory.filter(inventory => inventory.itemname === itemname);
+    console.log(filteredInventories);
+    // Calculate the sum of quantities
+    const sumOfQuantities = filteredInventories.reduce((total, inventory) => total + inventory.quantity, 0);
+    // Calculate the average
+    const averageQuantity = sumOfQuantities / filteredInventories.length;
+    console.log(averageQuantity);
+    alert("Based on your usage, you might need "+ averageQuantity+" of "+itemname+" for the next month");
+  }  
   componentDidMount(){
     this.props.dispatch(fetchInventoryHistory());
   }

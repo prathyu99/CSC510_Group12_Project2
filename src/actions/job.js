@@ -4,7 +4,7 @@ import { getFormBody } from '../helpers/utils';
 import {
     ADD_JOB,
     UPDATE_JOB,
-    
+    ADD_INVENTORY_HISTORY,
     ADD_MENU,
     UPDATE_MENU
   } from './actionTypes';
@@ -128,7 +128,35 @@ export function createJob(
         });
     };
   }
-  
+ 
+  export function createInventoryHistory(
+    itemname,quantity
+  ) {
+    return (dispatch) => {
+      const url = APIURLS.createInventoryHistory();
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: getFormBody({
+          itemname,
+          quantity
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('data', data);
+          if (data.success) {
+            // do something
+            localStorage.setItem("token", data.data.token);
+            dispatch(inventoryHistorySuccess(data.data.inventoryhistory));
+            return;
+          }
+          // dispatch(signupFailed(data.message));
+        });
+    };
+  }
 
 
 export function updateJobs(jobs) {
@@ -145,6 +173,11 @@ export function updateJobs(jobs) {
     };
   }
 
-
+  export function updateInventoryHistory(inventoryhistory) {
+    return {
+      type: UPDATE_INVENTORY_HISTORY,
+      inventoryhistory,
+    };
+  }
 
 

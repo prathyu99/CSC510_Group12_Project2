@@ -7,7 +7,7 @@ import {clearsearchstate} from '../actions/search';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {createJob} from '../actions/job';
+import {createJob, createInventoryHistory} from '../actions/job';
 import { fetchJobs } from '../actions/job';
 
 
@@ -37,7 +37,7 @@ class Goal extends Component {
     
     
         this.props.dispatch(editItem(itemname,quantity))
-    
+        this.props.dispatch(createInventoryHistory(itemname,quantity))
         this.setState({
           itemname:''
         })
@@ -79,7 +79,7 @@ class Goal extends Component {
     })
 
     this.props.dispatch(createJob(user.restname,user._id,itemname,quantity,costperitem,datebought,dateexpired))
-
+    this.props.dispatch(createInventoryHistory(itemname,quantity))
     this.setState({
       itemname:''
     })

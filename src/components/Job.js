@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { createApplication , closeJob} from '../actions/job';
+import { connect, useDispatch } from 'react-redux';
+import { createApplication , closeJob, fetchInventoryHistory, fetchJobs, deleteInventoryItem} from '../actions/job';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 class Job extends Component {
-    
+  
   predictItem = (itemname)=>{
     //const dispatch = useDispatch();
     const inventoryhistory = this.props.inventoryhistory;
@@ -17,16 +17,20 @@ class Job extends Component {
     const averageQuantity = sumOfQuantities / filteredInventories.length;
     console.log(averageQuantity);
     alert("Based on your usage, you might need "+ averageQuantity+" of "+itemname+" for the next month");
-  }  
+  }
+  deleteItem = (itemname)=>{
+    this.props.dispatch(deleteInventoryItem(itemname));
+    alert("Are sure, you want to delete "+ itemname +" from your inventory?");
+    this.props.dispatch(fetchJobs());
+  }
   componentDidMount(){
     this.props.dispatch(fetchInventoryHistory());
   }
-       
+    //this.props.dispatch(fetchInventoryHistory())
+  
     render() {
-        const { job } = this.props;
+        const {job} = this.props;
         const {user} = this.props.auth;
-        console.log('lalallaalaxxxx')
-        
         return (
           
             <div className="post" key={job._id} style={{width:'50vw',marginLeft:'50px'}}>
@@ -36,10 +40,12 @@ class Job extends Component {
               <div >
                 <h4 style={{display:'inline-block'}}>Restaurant Name : </h4> 
                 <span style={{marginLeft:'10px'}}>{job.restname}</span>
+                <button style={{marginLeft:'200px', marginRight:'10px'}} className="button delete-btn" onClick={()=>this.deleteItem(job.itemname)}>Delete &nbsp; 
+                <FontAwesomeIcon icon={faTrash} style={{color: "#f9fafa",}}/></button>
                 <button style={{marginLeft:'10px'}} className="button predict-btn" onClick={()=>this.predictItem(job.itemname)}>Predict &nbsp; 
                 <FontAwesomeIcon icon={faChartBar} style={{color: "#f9fafa",}}/></button>
-             </div>
-
+                </div>
+                
 
                   <div >
                 <h4 style={{display:'inline-block',marginTop:'-12px'}}>Item : </h4> 
@@ -66,7 +72,6 @@ class Job extends Component {
                 <span style={{marginLeft:'10px'}}>{job.quantity}</span>
                   </div> 
                 
-                
               
             
             </div> : []}
@@ -76,11 +81,11 @@ class Job extends Component {
 }
 
 function mapStateToProps({ auth, job,application, inventoryhistory}) {
-  return {
-    auth,
-    application,
-    inventoryhistory
-  };
-}
+    return {
+      auth,
+      application,
+      inventoryhistory
+    };
+  }
   
   export default connect(mapStateToProps)(Job);

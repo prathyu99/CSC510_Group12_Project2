@@ -23,7 +23,9 @@ class Job extends Component {
               <div >
                 <h4 style={{display:'inline-block'}}>Restaurant Name : </h4> 
                 <span style={{marginLeft:'10px'}}>{job.restname}</span>
-                  </div>
+                <button style={{marginLeft:'10px'}} className="button predict-btn" onClick={()=>this.predictItem(job.itemname)}>Predict &nbsp; 
+                <FontAwesomeIcon icon={faChartBar} style={{color: "#f9fafa",}}/></button>
+             </div>
 
 
                   <div >

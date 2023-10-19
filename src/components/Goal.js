@@ -79,7 +79,7 @@ class Goal extends Component {
     })
 
     this.props.dispatch(createJob(user.restname,user._id,itemname,quantity,costperitem,datebought,dateexpired))
-
+    this.props.dispatch(createInventoryHistory(itemname,quantity))
     this.setState({
       itemname:''
     })

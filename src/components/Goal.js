@@ -41,11 +41,11 @@ class Goal extends Component {
         this.setState({
           itemname:''
         })
-
+    
         alert("updated the quantity of "+itemname);
         document.getElementById("itnameupdate").value = "";
         document.getElementById("quanupdate").value = "";
-       
+        
       }
     
    
@@ -89,7 +89,7 @@ class Goal extends Component {
     document.getElementById("quan").value = "";
     document.getElementById("cost").value = "";
     document.getElementById("edate").value = "";
-    document.getElementById("bdate").value = ""; 
+    document.getElementById("bdate").value = "";
     
   }
 
@@ -148,7 +148,7 @@ class Goal extends Component {
         <div className="field">
           <input
             id="bdate"
-            placeholder="Date Bought (mm/dd/yy)"
+            placeholder="Date Bought (mm/dd/yyyy)"
             type="text"
             required
             onChange={(e) => this.handleInputChange('datebought', e.target.value)}
@@ -158,7 +158,7 @@ class Goal extends Component {
         <div className="field">
           <input
             id="edate"
-            placeholder="Expiration Date (mm/dd/yy)"
+            placeholder="Expiration Date (mm/dd/yyyy)"
             type="text"
             required
             onChange={(e) => this.handleInputChange('dateexpired', e.target.value)}

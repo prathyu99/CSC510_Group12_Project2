@@ -132,7 +132,7 @@ class Notification extends Component {
             var parts2 = job.dateexpired.split('/')
             console.log('parrrtptptps',parts2)
             console.log('parrrt1',parts)
-            if (Number(parts2[0]) - Number(parts[2]) < 1 && Number(parts2[1]) - Number(parts[1] < -2) && Number(parts[0]) > Number(parts2[2])){
+            if (Number(parts[0]) - Number(parts2[2]) < 0 || Number(parts[1]) - Number(parts2[0]) < 0 || Number(parts[2]) > Number(parts2[1])){
 
               return <Card  key={job._id}>
                 <CardContent>

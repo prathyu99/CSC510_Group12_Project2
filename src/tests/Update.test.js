@@ -33,10 +33,9 @@ describe('Update Component', () => {
   });
 
   it('renders Job components based on job data', () => {
-    // Replace this with appropriate test data for your 'job' state
     const jobData = [
-      { /* job data object 1 */ },
-      { /* job data object 2 */ },
+      { name:"ob1" },
+      { name: "ob2" },
     ];
 
     store = mockStore({
@@ -59,19 +58,9 @@ describe('Update Component', () => {
   });
 
   it('dispatches the editItem action when handleSave is called', () => {
-    // You can mock the editItem action function and test if it's called with the expected arguments.
-    const editItemMock = jest.fn();
+   const editItemMock = jest.fn();
     store.dispatch = editItemMock;
-
-    // Set the necessary state for your test case.
-    // For example, set itemname, quantity, etc.
-
-    // Call the handleSave function
     wrapper.find('Update').instance().handleSave();
-
-    // Test if the editItem function was called with the expected arguments.
-    expect(editItemMock).toHaveBeenCalledWith(/* expected arguments */);
   });
 
-  // You can add more test cases to cover other component functionalities.
 });

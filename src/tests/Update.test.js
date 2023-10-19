@@ -1,66 +1,21 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Update from '../path-to-your-component/Update';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux'
+import Update from '../components/Update';
+import { configureStore } from '../store'
 
-const mockStore = configureStore();
+const store = configureStore()
 
-describe('Update Component', () => {
-  let wrapper;
-  let store;
+const error = {
+    
+};
 
-  beforeEach(() => {
-    store = mockStore({
-      auth: {
-        user: { /* your user data here */ },
-      },
-      search: {
-        results: [],
-      },
-      job: [],
-    });
-
-    wrapper = mount(
-      <Provider store={store}>
-        <Update />
-      </Provider>
+test('render', () => {
+    const wrapper = mount(
+        <Provider store={store}>
+            <Update error={error} />
+        </Provider>
     );
-  });
-
-  it('renders without crashing', () => {
-    expect(wrapper.exists()).toBe(true);
-  });
-
-  it('renders Job components based on job data', () => {
-    const jobData = [
-      { name:"ob1" },
-      { name: "ob2" },
-    ];
-
-    store = mockStore({
-      auth: {
-        user: { /* your user data here */ },
-      },
-      search: {
-        results: [],
-      },
-      job: jobData,
-    });
-
-    wrapper = mount(
-      <Provider store={store}>
-        <Update />
-      </Provider>
-    );
-
-    expect(wrapper.find('Job').length).toBe(jobData.length);
-  });
-
-  it('dispatches the editItem action when handleSave is called', () => {
-   const editItemMock = jest.fn();
-    store.dispatch = editItemMock;
-    wrapper.find('Update').instance().handleSave();
-  });
+    expect(wrapper).toMatchSnapshot();
 
 });

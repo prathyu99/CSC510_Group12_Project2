@@ -2,11 +2,14 @@
 import { APIURLS } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
 import {
-    ADD_JOB,
-    UPDATE_JOB,
-    ADD_INVENTORY_HISTORY,
-    ADD_MENU,
-    UPDATE_MENU
+  ADD_JOB,
+  UPDATE_JOB,
+  ADD_MENU,
+  UPDATE_MENU,
+  
+  ADD_INVENTORY_HISTORY,
+  UPDATE_INVENTORY_HISTORY,
+  
   } from './actionTypes';
 
 
@@ -158,7 +161,22 @@ export function createJob(
     };
   }
 
-
+  export function fetchInventoryHistory() {
+    return (dispatch) => {
+      
+      const url = APIURLS.fetchInventoryHistory();
+  
+      fetch(url)
+        .then((response) => {
+          console.log('Response', response);
+          return response.json();
+        })
+        .then((data) => {
+          dispatch(updateInventoryHistory(data.inventoryhistory));
+        });
+    };
+  }
+  
 export function updateJobs(jobs) {
     return {
       type: UPDATE_JOB,

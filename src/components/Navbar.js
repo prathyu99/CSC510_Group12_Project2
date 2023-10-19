@@ -90,10 +90,10 @@ class Navbar extends React.Component {
               <div className="user">
                 <Link to="/settings">
                   <img
-                    src="/images/usericon.png"
+                    src="/images/contact-person-red-icon-free-png.png"
                     alt="user-dp"
                     id="user-dp"
-                    style={{ marginLeft: "0px" }}
+                    style={{ marginLeft: "0px", height: "30px", width: "30px" }}
                   />
                 </Link>
                 <span

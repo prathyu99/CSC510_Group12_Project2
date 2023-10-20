@@ -86,7 +86,8 @@ https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-
 
 
 - Then enter
- to install all the required dependencies in both the terminal. The dependencies have been mentioned in the 'package.json' file.
+ to install all the required dependencies in both the terminal. The dependencies have been mentioned in the 'package.json' file. If you want to check newer versions of dependencies use
+#### `npm-check-updates`
 
  - Then enter below command for both the terminals to start the application:
 #### `npm start`

@@ -81,7 +81,7 @@ https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-
  - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
  
  - In the command prompt clone the frontend project using following commands:
-#### `git clone https://github.com/prathyu99/CSC510_Group25_Project1.git`
+#### `git clone https://github.com/prathyu99/CSC510_Group12_Project2.git`
 #### `git clone https://github.com/prathyu99/86_Backend.git`
 
 

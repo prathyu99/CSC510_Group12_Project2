@@ -76,9 +76,9 @@ https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-
 
 # Installation Guide
  
- - Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows)
- - Download and install [NodeJs](https://nodejs.org/en/download/)
- - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
+ - Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows) - Version: 18.17.1
+ - Download and install [NodeJs](https://nodejs.org/en/download/) - Version: 7.0.2
+ - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome - Version: 2.8.5
  
  - In the command prompt clone the frontend project using following commands:
 #### `git clone https://github.com/prathyu99/CSC510_Group12_Project2.git`

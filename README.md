@@ -4,7 +4,7 @@ Video Link:
 
 [![DOI Frontend](https://zenodo.org/badge/DOI/10.5281/zenodo.10023397.svg)](https://zenodo.org/doi/10.5281/zenodo.10023397)
 
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://opensource.org/license/mit/)
 [![Build Status](https://app.travis-ci.com/prathyu99/CSC510_Group25_Project1.svg?branch=main)](https://app.travis-ci.com/prathyu99/CSC510_Group25_Project1)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Issues](https://img.shields.io/github/issues/prathyu99/CSC510_Group25_Project1)](https://GitHub.com/prathyu99/CSC510_Group25_Project1/)
